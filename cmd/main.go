@@ -6,7 +6,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/jarodlam/advent-of-code-2023/pkg/common"
+	"github.com/jarodlam/advent-of-code-2023/pkg/utils"
 )
 
 var (
@@ -14,7 +14,7 @@ var (
 	argInputFile string
 )
 
-func solve(s pkg.Solution, input string) (any, any) {
+func solve(s utils.Solution, input string) (any, any) {
 	return s.Part1(input), s.Part2(input)
 }
 
@@ -40,7 +40,7 @@ func main() {
 	input := string(data)
 
 	// Run solution
-	sol := pkg.NewSolution(argDay)
+	sol := newSolution(argDay)
 	part1, part2 := solve(sol, input)
 	fmt.Println(part1)
 	fmt.Println(part2)

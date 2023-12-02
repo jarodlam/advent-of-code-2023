@@ -1,9 +1,9 @@
 package day01
 
 import (
-	"bufio"
 	"strconv"
-	"strings"
+
+	"github.com/jarodlam/advent-of-code-2023/pkg/utils"
 )
 
 type Solution struct{}
@@ -21,18 +21,18 @@ var numbers = map[string]int{
 }
 
 func reverseString(s string) string {
-	rns := []rune(s) // convert to rune
+	rns := []rune(s)
 	for i, j := 0, len(rns)-1; i < j; i, j = i+1, j-1 {
-		// swap the letters of the string,
-		// like first with last and so on.
 		rns[i], rns[j] = rns[j], rns[i]
 	}
-
-	// return the reversed string.
 	return string(rns)
 }
 
 func firstNumber(line string, digits bool, reversed bool) int {
+	if reversed {
+		line = reverseString(line)
+	}
+
 	for pos, char := range line {
 		// Look for digits
 		n, err := strconv.Atoi(string(char))
@@ -66,35 +66,25 @@ func firstNumber(line string, digits bool, reversed bool) int {
 }
 
 func (Solution) Part1(input string) any {
-	scanner := bufio.NewScanner(strings.NewReader(input))
 	sum := 0
-
-	for scanner.Scan() {
-		line := scanner.Text()
-
+	utils.ForEachLine(input, func(line string) {
 		first := firstNumber(line, false, false)
-		last := firstNumber(reverseString(line), false, true)
-
+		last := firstNumber(line, false, true)
 		value := first*10 + last
 		sum += value
-	}
+	})
 
 	return sum
 }
 
 func (Solution) Part2(input string) any {
-	scanner := bufio.NewScanner(strings.NewReader(input))
 	sum := 0
-
-	for scanner.Scan() {
-		line := scanner.Text()
-
+	utils.ForEachLine(input, func(line string) {
 		first := firstNumber(line, true, false)
-		last := firstNumber(reverseString(line), true, true)
-
+		last := firstNumber(line, true, true)
 		value := first*10 + last
 		sum += value
-	}
+	})
 
 	return sum
 }
