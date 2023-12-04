@@ -49,7 +49,7 @@ func (game Game) MinimumPower() int {
 func parseGame(line string) Game {
 	// Game number
 	gameStr, drawsStr, _ := strings.Cut(line, ": ")
-	gameNo, _ := strconv.Atoi(gameStr[5:len(gameStr)])
+	gameNo, _ := strconv.Atoi(gameStr[5:])
 
 	// Draws
 	drawsStrs := strings.Split(drawsStr, "; ")
