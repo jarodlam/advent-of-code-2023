@@ -3,6 +3,8 @@ package utils
 import (
 	"bufio"
 	"fmt"
+	"regexp"
+	"strconv"
 	"strings"
 )
 
@@ -71,4 +73,16 @@ func NewGrid[T any](rows int, cols int, c T) [][]T {
 func CloneGrid[T any, U any](gridToClone [][]U, c T) [][]T {
 	rows, cols := GridSize(gridToClone)
 	return NewGrid(rows, cols, c)
+}
+
+// FindAllInts extracts all integers from a string in order.
+func FindAllInts(s string) []int {
+	re := regexp.MustCompile(`\d+`)
+	found := re.FindAllString(s, -1)
+	numbers := make([]int, len(found))
+	for i, x := range found {
+		n, _ := strconv.Atoi(x)
+		numbers[i] = n
+	}
+	return numbers
 }
