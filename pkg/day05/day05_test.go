@@ -51,7 +51,7 @@ func TestPart1(t *testing.T) {
 }
 
 func TestPart2(t *testing.T) {
-	want := 0
+	want := 46
 	got := sol.Part2(testInput)
 	if want != got {
 		t.Errorf("Expected '%d', but got '%d'", want, got)
