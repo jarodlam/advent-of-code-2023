@@ -2,7 +2,7 @@ BINARY_NAME=aoc2023
 
 .PHONY: build
 build:
-	go build -o ${BINARY_NAME} ./cmd/main.go
+	go build -o ${BINARY_NAME} ./cmd
 
 .PHONY: clean
 clean:
@@ -15,4 +15,4 @@ test:
 
 .PHONY: fmt
 fmt:
-	@gofumpt -l -w -e $(shell find . -type f -name '*.go')
+	@gofumpt -l -w -e .
