@@ -8,6 +8,7 @@ import (
 	"github.com/jarodlam/advent-of-code-2023/pkg/day03"
 	"github.com/jarodlam/advent-of-code-2023/pkg/day04"
 	"github.com/jarodlam/advent-of-code-2023/pkg/day05"
+	"github.com/jarodlam/advent-of-code-2023/pkg/day06"
 	"github.com/jarodlam/advent-of-code-2023/pkg/utils"
 )
 
@@ -23,6 +24,8 @@ func newSolution(day int) utils.Solution {
 		return day04.Solution{}
 	case 5:
 		return day05.Solution{}
+	case 6:
+		return day06.Solution{}
 	}
 	panic("Invalid day: " + strconv.Itoa(day))
 }
